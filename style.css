@@ -1,0 +1,295 @@
+:root{
+    --color1: #ede4d0;
+    --color2: pink;
+    --color3: #393b4b;
+    --color4: rgb(18,19,19);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background: url(./assets/bg.jpg) center/cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    width: calc(100% - 50px);
+    background: rgba(0, 0, 0, 0.45);
+    padding: 20px 20px 6px;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.45);
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+}
+
+.card::before{
+    content: "\2730";
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    font-size: 2.4rem;
+}
+
+.card h1{
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.card h1::after{
+    content: "";
+    position: absolute;
+    background: var(--color2);
+    height: 1px;
+    width: 100%;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: left;
+    animation: h1animation 10s ease-in-out forwards;
+}
+
+@keyframes h1animation{
+    100% {
+        transform: translateX(-50%) scaleX(1);
+    }
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.polygon-container{
+    filter: drop-shadow(-1px 6px 3px var(--color2));
+    place-self: center left;
+}
+
+.polygon{
+    height: 100px;
+    width: 100px;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    background: linear-gradient(135deg, var(--color2) 0%, var(--color1) 100%);
+}
+
+.polygon::after{
+    width: 90px;
+    content: "Un texte";
+    position: absolute;
+    color: var(--color2);
+    background: var(--color4);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(348deg);
+    padding: 4px;
+    text-align: center;
+}
+
+.grid-container p{
+    line-height: 24px;
+    margin: 20px 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+}
+
+.grid-container p::selection{
+    background: var(--color2);
+    color: var(--color3);
+}
+
+.checkbox-container{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0 30px;
+    perspective: 40px;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+input[type="checkbox"]:checked + label{
+    background: var(--color2);
+    color: var(--color3);
+    transform: scale(1.05);
+    filter: brightness(120%);
+}
+
+label{
+    cursor: pointer;
+    border: 1px solid var(--color1);
+    background: var(--color3);
+    padding: 10px;
+    border-radius: 5px;
+    transition: .2s;
+    user-select: none;
+}
+
+label:first-of-type:hover{
+    animation: label1 1s infinite linear;
+}
+
+@keyframes label1{
+    50%{
+        transform: scale(1.4);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+label:nth-child(4):hover{
+    animation: label2 3s infinite linear;
+}
+
+@keyframes label2{
+    33%{
+        transform: translateZ(30px);
+    }
+    66%{
+        transform: translateZ(-40px);
+    }
+    100%{
+        transform: translateZ(0);
+    }
+}
+
+.e-mail{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.e-mail input{
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 3px solid transparent;
+    transition: 0.3s;
+    text-align: center;
+    font-style: 1.1rem;
+    color: var(--color1);
+    min-width: 180px;
+    width: 35%;
+    max-width: 300px;
+}
+
+.e-mail input[type="text"]:focus{
+    background: transparent;
+    border: 3px solid var(--color2);
+}
+
+.e-mail input[type="text"]::placeholder{
+    color: var(--color2);
+}
+
+button{
+    cursor: pointer;
+    background: var(--color2);
+    border: none;
+    font-style: 1.3rem;
+    padding: 10px 20px;
+    border-radius: 150px;
+    margin: 0 auto;
+    display: block;
+    transition: 0.3s;
+}
+
+button:active{
+    transform: scale(1.2);
+}
+
+button:hover + a,a:hover{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+a{
+    color: var(--color2);
+    text-align: center;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: 0.3s;
+}
+
+a:visited{
+    color: var(--color1);
+}
+
+img{
+    height: 40px;
+    position: absolute;
+    filter: drop-shadow(0px 6px 3px rgba(255,255,0,0.6));
+    z-index: -1;
+    animation: spaceship 60s infinite linear;
+}
+
+@keyframes spaceship{
+    0%{
+        top: 2%;
+        left: 2%;
+        transform: rotate(90deg);
+    }
+    10%{
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }
+    20%{
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }
+    30%{
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }
+    40%{
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }
+    50%{
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }
+    60%{
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }
+    70%{
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }
+    80%{
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }
+    90%{
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }
+    100%{
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }
+}
